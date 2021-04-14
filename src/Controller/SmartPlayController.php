@@ -23,15 +23,10 @@ class SmartPlayController extends AbstractController
      */
     public function Partners($slug)
     {
-        $comments = [
-            'COMMENT 1',
-            'COMMENT 2',
-            'COMMENT 3',
-            'COMMENT 4',
-        ];
+
         return $this->render('page/partners.html.twig', [
             'title' => ucwords(str_replace('-', ' ', $slug)),
-            'comments' => $comments,
+
         ]);
     }
 }
