@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %} Page: {{ title }} {% endblock %}
+{% block body %}
+<h1>{{ title }}</h1>
+<div>
+    <p> PARTNER X</p>
+    <p> PARTNER X</p>
+    <p> PARTNER X</p>
+    <p> PARTNER X</p>
+    <p> PARTNER X</p>
+    <p> PARTNER X</p>
+    <p> PARTNER X</p>
+    <h2>
+        COMMENTS ({{ comments|length }})
+    </h2>
+<ul>
+    {% for comment in comments %}
+        <li>
+            {{ comment }}
+        </li>
+    {% endfor %}
+</ul>
+
+</div>
+{% endblock %}
