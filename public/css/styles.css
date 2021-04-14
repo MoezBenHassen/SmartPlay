@@ -4,6 +4,31 @@ body {
     min-height: 45rem;
     padding-bottom: 80px;
 }
+.toys{
+    width: 100%;
+    height: 50%;
+}
+#description{
+    padding: 5px;
+    font-size: 20px;
+}
+#description p {
+    padding: 10px;
+    border-radius: .24rem;
+
+    margin: 5px;
+    margin-bottom: 15px;
+    color: #FFFFFF;
+}
+
+#navbarNavDropdown ul {
+   
+    width: 25%;
+    justify-content: space-between;
+}
+#navbarNavDropdown ul li:hover{
+    text-decoration: underline;
+}
 .row2 {
     display: flex;
     flex-wrap: wrap;

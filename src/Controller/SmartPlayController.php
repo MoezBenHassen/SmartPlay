@@ -11,15 +11,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class SmartPlayController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="app_homepage")
      */
     public function homepage()
     {
-        return new Response('SMART PLAY HOMEPAGE');
+        return $this->render('page/homepage.html.twig');
     }
 
     /**
-     * @Route("/pages/{slug}")
+     * @Route("/pages/{slug}", name="page_partners")
      */
     public function Partners($slug)
     {

@@ -18,7 +18,7 @@
 <body>
 <nav class="navbar navbar-dark bg-dark  navbar-expand-lg    mb-5  ">
 
-    <a style="margin-left: 5px;" class="navbar-brand space-brand" href="#">
+    <a style="margin-left: 5px;" class="navbar-brand space-brand" href="{{ path('app_homepage') }}">
         <img  src="{{ asset('images/red-among-us-png.png') }}" class="navbar-brand nav-profile-img" alt="">
         SmartPlay
     </a>
@@ -28,12 +28,12 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav mr-auto">
+        <ul id="ull" class="navbar-nav d-flex justify-content-between">
             <li class="nav-item">
-                <a style="color: #fff;" class="nav-link" href="#">HomePage</a>
+                <a style="color: #fff;" class="nav-link" href="{{ path('app_homepage') }}">HomePage</a>
             </li>
             <li class="nav-item">
-                <a style="color: #fff;" class="nav-link" href="#">Partners</a>
+                <a style="color: #fff;" class="nav-link" href="{{ path('page_partners',{ slug: 'partners' }) }}">Partners</a>
             </li>
         </ul>
         <!--

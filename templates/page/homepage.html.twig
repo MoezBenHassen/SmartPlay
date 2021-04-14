@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <!-- Article List -->
+
+            <div class="col-sm-12 col-md-8">
+
+                <!-- H1 Article -->
+                <a class="main-article-link" href="#">
+                    <div class="main-article mb-5 pb-3">
+                        <img src="{{ asset('images/toys_banner.jpg') }}" alt="meteor shower">
+                        <h1 class="text-center mt-2">Welcome to SmartPlay !  <br>Smarter with toys everyday</h1>
+                    </div>
+                </a>
+
+                <!-- Supporting Articles -->
+                <div id="description" class="article-container my-1">
+                    <p class="bg-dark">
+                        Welcome to ‘SMARTPLAY’ – your #1 hotspot for brilliant toys, infant items, diversions, kids books and music,
+                        stationary utilities and more. We’re committed to giving
+                        you the plain best with an attention on most astounding quality, unwavering quality, client administration and uniqueness.
+                    </p>
+                    <p class="bg-dark">
+                        After establishment in 1985, ‘SMARTPLAY’ made considerable progress in the past 30+ years. Presently,
+                        we’ve 17 toy shops at various areas in Maharashtra. We have an arrangement for extending crosswise over America. On the off chance that you’re keen on
+                        collaborating with us for an establishment store,
+                        you’re most free to apply for it here. We convey items crosswise over America through our numerous distribution centers and retail accomplices.
+                    </p>
+                </div>
+                <div class="article-container my-1">
+                    <a href="{{ path('page_partners',{ slug: 'partners' }) }}">
+                        <img class="article-img" src="{{ asset('images/partnership2.jpg') }}">
+                        <div class="article-title d-inline-block pl-3 align-middle">
+                            <span>Check Our beloved partners !! >>></span>
+                            <br>
+                        </div>
+                    </a>
+                </div>
+
+
+
+            </div>
+
+            <!-- Right bar ad space -->
+
+
+            <div class="col-sm-12 col-md-4 text-center">
+                <div class=" quote-space mx-auto mt-1 pb-2 pt-2">
+                    <img class="toys" src="{{ asset('images/toys_sale.jpg') }}">
+                    <p><span class="advertisement-text">New:</span> Big Sales !!</p>
+                    <button class="btn btn-info">Check Now!</button>
+                </div>
+
+                <div class="quote-space pb-2 pt-2 px-5">
+                    <h3 class="text-center pb-3">Client Reviews</h3>
+                    <p>
+                        <i class="fa fa-comment"></i>
+                        "This store's selection is out of this world. Clearly they live and love what they do. I went for kites and was blown away by the selection. The rest of the store was a sight to see, between high quality toys, and just-to-look-at large models suspended above. I will be back!"
+                        <br>—
+                        <a href="#"><i>Ben A</i></a>
+                    </p>
+                    <p>
+                        <i class="fa fa-comment"></i>
+                        "I rate it a 5 star because my son loves it! He buys the Law Enforcement vehicles and the fire trucks! He also buys the train sets they sell and the workers let him see the trains moving! When he is down in the dumps we go to Amatos to cheer him up! Thank you for the kindness! I hope you become a very successful company one day!"
+                        <br>—
+                        <a href="#"><i>Margarita C</i></a>
+                    </p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
