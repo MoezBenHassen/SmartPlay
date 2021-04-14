@@ -4,7 +4,93 @@ body {
     min-height: 45rem;
     padding-bottom: 80px;
 }
+.row2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 4px;
+    /*border: #FFBC49 solid 3px;*/
+}
+/* Create four equal columns that sits next to each other */
+.column {
 
+    flex: 25%;
+    flex-wrap: wrap;
+    max-width: 100%;
+    padding: 0 4px;
+    /*border: purple solid 2px;*/
+    justify-content: space-between;
+}
+.column img {
+    margin: 15px;
+    vertical-align: middle;
+    width: 40%;
+
+    border-radius:.25rem;
+}
+.column img:hover{
+    -webkit-box-shadow: 6px 7px 21px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 7px 21px 0px rgba(0,0,0,0.75);
+    box-shadow: 6px 7px 21px 0px rgba(0,0,0,0.75);
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+    .column {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        flex: 100%;
+        max-width: 100%;
+    }
+}
+
+#ddiv {
+
+    width: 100%;
+margin: 10px;
+}
+.show-article-container{
+
+}
+#ptitlediv{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    text-align: center;
+}
+#ptitle{
+    text-align: center;
+    color: #FFFFFF;
+}
+#divdiv{
+
+}
+.partners-imgs img{
+    height: 300px;
+    width: 300px;
+
+    padding:.25rem;background-color:#fff;
+    border:1px solid #ddd;
+    border-radius:.25rem;
+    transition:all .2s ease-in-out;max-width:100%;
+    height:auto;
+}
+.partners-imgs img:hover{
+    -webkit-box-shadow: 6px 7px 21px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 7px 21px 0px rgba(0,0,0,0.75);
+    box-shadow: 6px 7px 21px 0px rgba(0,0,0,0.75);
+}
+div.partners-imgs {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: solid red 2px;
+}
 html {height:100%}
 
 /* NAVIGATION */
@@ -25,7 +111,6 @@ html {height:100%}
 
 .nav-profile-img {
     width: 50px;
-    border: 1px solid #fff;
 }
 
 
@@ -170,6 +255,14 @@ html {height:100%}
     background-color: #fff;
 }
 
+.container-fluid {
+    border: purple solid 2px;
+
+}
+.row{
+
+    width: 100%;
+}
 .show-article-img {
     width: 250px;
     height: auto;
@@ -195,9 +288,6 @@ html {height:100%}
     }
 }
 
-.article-text {
-    margin-top: 20px;
-}
 
 .share-icons i {
     font-size: 1.5em;
