@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\LigneCdeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,13 +18,14 @@ class LigneCde
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=Commande::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="code_jouet_ligne")
      * @ORM\JoinColumn(nullable=false)
      */
     private $num_cde_ligne;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Jouet::class)
+     * @ORM\ManyToOne(targetEntity=Jouet::class, inversedBy="ligneCdes")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $code_jouet_ligne;
 
@@ -36,14 +35,9 @@ class LigneCde
     private $qte_ligne;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $remise_ligne;
-
-    public function __construct()
-    {
-        $this->code_jouet_ligne = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -55,33 +49,21 @@ class LigneCde
         return $this->num_cde_ligne;
     }
 
-    public function setNumCdeLigne(Commande $num_cde_ligne): self
+    public function setNumCdeLigne(?Commande $num_cde_ligne): self
     {
         $this->num_cde_ligne = $num_cde_ligne;
 
         return $this;
     }
 
-    /**
-     * @return Collection|Jouet[]
-     */
-    public function getCodeJouetLigne(): Collection
+    public function getCodeJouetLigne(): ?Jouet
     {
         return $this->code_jouet_ligne;
     }
 
-    public function addCodeJouetLigne(Jouet $codeJouetLigne): self
+    public function setCodeJouetLigne(?Jouet $code_jouet_ligne): self
     {
-        if (!$this->code_jouet_ligne->contains($codeJouetLigne)) {
-            $this->code_jouet_ligne[] = $codeJouetLigne;
-        }
-
-        return $this;
-    }
-
-    public function removeCodeJouetLigne(Jouet $codeJouetLigne): self
-    {
-        $this->code_jouet_ligne->removeElement($codeJouetLigne);
+        $this->code_jouet_ligne = $code_jouet_ligne;
 
         return $this;
     }
@@ -103,7 +85,7 @@ class LigneCde
         return $this->remise_ligne;
     }
 
-    public function setRemiseLigne(int $remise_ligne): self
+    public function setRemiseLigne(?int $remise_ligne): self
     {
         $this->remise_ligne = $remise_ligne;
 

@@ -44,9 +44,15 @@ class Jouet
      */
     private $code_four_jouet;
 
+    /**
+     * @ORM\OneToMany(targetEntity=LigneCde::class, mappedBy="code_jouet_ligne")
+     */
+    private $ligneCdes;
+
     public function __construct()
     {
         $this->code_four_jouet = new ArrayCollection();
+        $this->ligneCdes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -122,6 +128,36 @@ class Jouet
     public function removeCodeFourJouet(Fournisseur $codeFourJouet): self
     {
         $this->code_four_jouet->removeElement($codeFourJouet);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LigneCde[]
+     */
+    public function getLigneCdes(): Collection
+    {
+        return $this->ligneCdes;
+    }
+
+    public function addLigneCde(LigneCde $ligneCde): self
+    {
+        if (!$this->ligneCdes->contains($ligneCde)) {
+            $this->ligneCdes[] = $ligneCde;
+            $ligneCde->setCodeJouetLigne($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLigneCde(LigneCde $ligneCde): self
+    {
+        if ($this->ligneCdes->removeElement($ligneCde)) {
+            // set the owning side to null (unless already changed)
+            if ($ligneCde->getCodeJouetLigne() === $this) {
+                $ligneCde->setCodeJouetLigne(null);
+            }
+        }
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommandeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +44,16 @@ class Commande
      * @ORM\JoinColumn(nullable=false)
      */
     private $code_clt_cde;
+
+    /**
+     * @ORM\OneToMany(targetEntity=LigneCde::class, mappedBy="num_cde_ligne", orphanRemoval=true)
+     */
+    private $code_jouet_ligne;
+
+    public function __construct()
+    {
+        $this->code_jouet_ligne = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +116,36 @@ class Commande
     public function setCodeCltCde(?Client $code_clt_cde): self
     {
         $this->code_clt_cde = $code_clt_cde;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LigneCde[]
+     */
+    public function getCodeJouetLigne(): Collection
+    {
+        return $this->code_jouet_ligne;
+    }
+
+    public function addCodeJouetLigne(LigneCde $codeJouetLigne): self
+    {
+        if (!$this->code_jouet_ligne->contains($codeJouetLigne)) {
+            $this->code_jouet_ligne[] = $codeJouetLigne;
+            $codeJouetLigne->setNumCdeLigne($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCodeJouetLigne(LigneCde $codeJouetLigne): self
+    {
+        if ($this->code_jouet_ligne->removeElement($codeJouetLigne)) {
+            // set the owning side to null (unless already changed)
+            if ($codeJouetLigne->getNumCdeLigne() === $this) {
+                $codeJouetLigne->setNumCdeLigne(null);
+            }
+        }
 
         return $this;
     }
