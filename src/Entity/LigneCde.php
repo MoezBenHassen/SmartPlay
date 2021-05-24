@@ -18,19 +18,17 @@ class LigneCde
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="code_jouet_ligne")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=Commande::class)
      */
     private $num_cde_ligne;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Jouet::class, inversedBy="ligneCdes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=Jouet::class)
      */
     private $code_jouet_ligne;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $qte_ligne;
 
@@ -73,7 +71,7 @@ class LigneCde
         return $this->qte_ligne;
     }
 
-    public function setQteLigne(int $qte_ligne): self
+    public function setQteLigne(?int $qte_ligne): self
     {
         $this->qte_ligne = $qte_ligne;
 

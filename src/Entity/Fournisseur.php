@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FournisseurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,45 +20,38 @@ class Fournisseur
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $code_four;
-
-    /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $des_four;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $adr_four;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $contact_four;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $tel_four;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Jouet::class, mappedBy="code_four_jouer")
+     */
+    private $jouets;
+
+    public function __construct()
+    {
+        $this->jouets = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCodeFour(): ?int
-    {
-        return $this->code_four;
-    }
-
-    public function setCodeFour(int $code_four): self
-    {
-        $this->code_four = $code_four;
-
-        return $this;
     }
 
     public function getDesFour(): ?string
@@ -64,7 +59,7 @@ class Fournisseur
         return $this->des_four;
     }
 
-    public function setDesFour(string $des_four): self
+    public function setDesFour(?string $des_four): self
     {
         $this->des_four = $des_four;
 
@@ -76,7 +71,7 @@ class Fournisseur
         return $this->adr_four;
     }
 
-    public function setAdrFour(string $adr_four): self
+    public function setAdrFour(?string $adr_four): self
     {
         $this->adr_four = $adr_four;
 
@@ -88,7 +83,7 @@ class Fournisseur
         return $this->contact_four;
     }
 
-    public function setContactFour(string $contact_four): self
+    public function setContactFour(?string $contact_four): self
     {
         $this->contact_four = $contact_four;
 
@@ -100,9 +95,39 @@ class Fournisseur
         return $this->tel_four;
     }
 
-    public function setTelFour(string $tel_four): self
+    public function setTelFour(?string $tel_four): self
     {
         $this->tel_four = $tel_four;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Jouet[]
+     */
+    public function getJouets(): Collection
+    {
+        return $this->jouets;
+    }
+
+    public function addJouet(Jouet $jouet): self
+    {
+        if (!$this->jouets->contains($jouet)) {
+            $this->jouets[] = $jouet;
+            $jouet->setCodeFourJouer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJouet(Jouet $jouet): self
+    {
+        if ($this->jouets->removeElement($jouet)) {
+            // set the owning side to null (unless already changed)
+            if ($jouet->getCodeFourJouer() === $this) {
+                $jouet->setCodeFourJouer(null);
+            }
+        }
 
         return $this;
     }

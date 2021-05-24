@@ -18,17 +18,17 @@ class Client
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $des_clt;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $adr_clt;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $tel_clt;
 
@@ -42,7 +42,7 @@ class Client
         return $this->des_clt;
     }
 
-    public function setDesClt(string $des_clt): self
+    public function setDesClt(?string $des_clt): self
     {
         $this->des_clt = $des_clt;
 
@@ -54,7 +54,7 @@ class Client
         return $this->adr_clt;
     }
 
-    public function setAdrClt(string $adr_clt): self
+    public function setAdrClt(?string $adr_clt): self
     {
         $this->adr_clt = $adr_clt;
 
@@ -66,7 +66,7 @@ class Client
         return $this->tel_clt;
     }
 
-    public function setTelClt(string $tel_clt): self
+    public function setTelClt(?string $tel_clt): self
     {
         $this->tel_clt = $tel_clt;
 

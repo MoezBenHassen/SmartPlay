@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{%  form_theme formJouet 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <div id="editform">
+        <h1>
+            {% if editMode %}
+                Edition d'article
+            {% else %}
+                Ajout d'article
+            {% endif %}
+        </h1>
+
+
+        {#    {{ form(formJouet) }}#}
+        {{ form_start(formJouet) }}
+
+        {{ form_row(formJouet.des_jouet, {'attr': {'placeholder' : 'DEscription jouet ' }}) }}
+        {{ form_row(formJouet.qte_stock_jouet, {'attr': {'placeholder' : 'QTE stock jouet '}}) }}
+        {{ form_row(formJouet.pu_jouet, {'attr': {'placeholder' : 'Prix unitaire jouet'}}) }}
+
+        {#        {{ form_widget(formJouet) }}#}
+        <button type="submit" class="btn btn-success">
+            {% if editMode %}
+                Editer l'article
+            {% else %}
+                Enregistrer les modifications
+            {% endif %}
+        </button>
+
+        {{ form_end(formJouet) }}
+    </div>
+
+{% endblock %}

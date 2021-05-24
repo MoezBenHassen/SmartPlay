@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div id="addspan">
+    <h1 id="hJouet"> Liste Jouets </h1>
+    <a href="{{ path('page_add') }}" class="btn btn-primary"> Ajouter un jouet  </a>
+    </div>
+
+    {% for jouet in jouets %}
+    <article class="jouets">
+            <span>
+                <img src="{{ asset('images/toy.jpg') }}" alt="">
+            </span>
+            <span id="toy_desc">
+                <h2>{{ jouet.getDesJouet }}</h2>
+                <p id="Qty">Quantité en Stock: {{ jouet.getQteStockJouet }}</p>
+                <p id="PU">Prix Unitaire: {{ jouet.getPUJouet }}</p>
+                <span>
+                    <a href="{{ path('page_edit',{ id: jouet.id }) }}" class="btn btn-primary"> EDITER </a>
+                    <a href="{{ path('page_delete',{ id: jouet.id }) }}" class="btn btn-danger"> SUPPRIMER </a>
+                </span>
+
+            </span>
+
+    </article>
+
+    {% endfor %}
+{% endblock %}

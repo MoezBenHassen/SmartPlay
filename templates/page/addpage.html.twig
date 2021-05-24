@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{%  form_theme formJouet 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <div id="editform">
+        <h1> ADD  PAGE</h1>
+        {#    {{ form(formJouet) }}#}
+        {{ form_start(formJouet) }}
+
+        {{ form_row(formJouet.des_jouet, {'attr': {'placeholder' : 'Decription Jouet'}}) }}
+        {{ form_row(formJouet.qte_stock_jouet, {'attr': {'placeholder' : 'Qte en Stock'}}) }}
+        {{ form_row(formJouet.pu_jouet, {'attr': {'placeholder' : 'Prix unitaire' }}) }}
+
+        {#        {{ form_widget(formJouet) }}#}
+        <button type="submit" class="btn btn-success"> Ajouter </button>
+
+        {{ form_end(formJouet) }}
+    </div>
+
+{% endblock %}

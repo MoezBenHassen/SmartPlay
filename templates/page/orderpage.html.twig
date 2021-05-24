@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1> ORDER  PAGE</h1>
+    {% for commande  in commandes %}
+    <article class="commandes">
+        <span id="toy_desc">
+                <h2>{{ commande.id}}</h2>
+                <p>date_cde</p>
+            <p>heure_cde</p>
+            <p>remide_cde</p>
+            <p>mnt_cde</p>
+            <p>code_clt_cde_id</p>
+                <span>
+{#                    <a href="{{ path('page_edit',{ id: jouet.id }) }}" class="btn btn-primary"> EDITER </a>#}
+{#                    <a href="{{ path('page_delete',{ id: jouet.id }) }}" class="btn btn-danger"> SUPPRIMER </a>#}
+                </span>
+
+            </span>
+
+    </article>
+    {% endfor %}
+{% endblock %}
